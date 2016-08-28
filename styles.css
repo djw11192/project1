@@ -1,3 +1,80 @@
-body{
-  background: blue;
+/*#container{
+  width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+  border: 1px dashed black;
+}
+#scoreboard-left{
+  float: left;
+  height: 100px;
+  width: 597px;
+  border-right: 3px solid grey;
+  background: grey;
+  opacity: 0.3;
+}
+#scoreboard-right{
+  height: 100px;
+  width: 597px;
+  border-left: 3px solid grey;
+  display: inline-block;
+  background: grey;
+}
+#game-container{
+  height:500px;
+  border: 1px dashed black;
+}
+.cards{
+  /*background: yellow;*/
+  /*background: url("images/77617_340.jpg") no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 100px;
+  width:100px;
+  border-radius: 400px;
+}
+img{
+  width:90px;
+  border-radius: 400px;
+  padding: 5px;
+}*/
+#container{
+  width:1300px;
+  height:650px;
+  margin: 0 auto;
+  border: 1px dashed black;
+}
+#scoreboard{
+  height: 100px;
+  width: 100%;
+  background: #2b2727;
+  vertical-align: top;
+}
+h1, h2, h3{
+  margin: 0;
+  display:inline-block;
+}
+h1{
+  color:red;
+  font-size: 70px;
+  padding: 0px 20px;
+}
+h2{
+  color: white;
+  font-size: 60px;
+  margin: 0px 168px;
+}
+h3{
+  color: red;
+  font-size: 30px;
+  padding: 25px 0 0 27px;
+}
+.game-score{
+  margin: 0 auto;
+  height: 60px;
+  width: 70px;
+  background: black;
+  display: inline-block;
+  border:5px solid grey;
+  vertical-align: top;
+
 }
