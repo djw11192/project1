@@ -58,18 +58,34 @@ h3{
   height: 100%;
   width: 385px;
   display: inline-block;
+  vertical-align: top;
 }
 #middle-section{
   /*background: grey;*/
   height: 100%;
   width: 225px;
   display: inline-block;
+  vertical-align: top;
+}
+h4{
+  text-align: center;
+  background: black;
+  border: 5px solid grey;
+  color: white;
+  height: 20px;
+  width: 160px;
+  margin: 10px 27.5px;
+}
+button{
+  display: inline-block;
+  margin: 0 auto;
 }
 #away-section{
   /*background: blue;*/
   height: 100%;
   width: 385px;
   display: inline-block;
+  vertical-align: top;
 }
 #away-sidebar{
   background: grey;
