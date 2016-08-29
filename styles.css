@@ -76,9 +76,54 @@ h4{
   width: 160px;
   margin: 10px 27.5px;
 }
-button{
+#button{
+  text-align: center;
+}
+#all-chips{
+  padding: 5px 0 0 11px;
+}
+.home-chips{
+  background: url("images/yellow-chip.jpg") no-repeat;
+  background-size: contain;
   display: inline-block;
-  margin: 0 auto;
+  height: 100px;
+  width:100px;
+  border-radius: 400px;
+  position: relative;
+}
+.Hchips-dealt{
+  background: url("images/yellow-chip.jpg") no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 100px;
+  width:100px;
+  border-radius: 400px;
+  position: relative;
+  position: absolute;
+}
+.away-chips{
+  background: url("images/blue-chip.jpg") no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 100px;
+  width:100px;
+  border-radius: 400px;
+  position: relative;
+}
+.Achips-dealt{
+  background: url("images/blue-chip.jpg") no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 100px;
+  width:100px;
+  border-radius: 400px;
+  position: relative;
+  position: absolute;
+}
+img{
+  width:90px;
+  border-radius: 400px;
+  padding: 5px;
 }
 #away-section{
   /*background: blue;*/
