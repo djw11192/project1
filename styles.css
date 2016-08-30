@@ -101,6 +101,9 @@ h4{
   position: relative;
   position: absolute;
 }
+.Hchips-dealt:hover{
+  opacity: 0.3;
+}
 .away-chips{
   background: url("images/blue-chip.jpg") no-repeat;
   background-size: contain;
@@ -120,13 +123,15 @@ h4{
   position: relative;
   position: absolute;
 }
+.Achips-dealt:hover{
+  opacity: 0.3;
+}
 img{
   width:90px;
   border-radius: 400px;
-  padding: 5px;
+  padding: 13px 5px 0 5px;
 }
 #away-section{
-  /*background: blue;*/
   height: 100%;
   width: 385px;
   display: inline-block;
