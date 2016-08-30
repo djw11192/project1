@@ -13,7 +13,7 @@
 
 
 //make a constructor to create players
-function MakePlayer(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image){
+function MakePlayer(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image, sum){
   this.ppg = ppg;
   this.reb = reb;
   this.ass = ass;
@@ -24,9 +24,7 @@ function MakePlayer(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image){
   this.threes = threes;
   this.tov = tov;
   this.image = image;
-  this.findWeightedSum = function(){
-    return (ppg+(reb*1.5)+(ass*1.7)+(stl*3)+(blk*4.5)+(fg/10)+(ft/10)+(threes*3)+(tov*-1.5));
-  }
+  this.sum =  (this.ppg+(this.reb*1.5)+(this.ass*1.7)+(this.stl*3)+(this.blk*4.5)+(this.fg/10)+(this.ft/10)+(this.threes*2)+(this.tov*-1.5));
 }
 
 var curry = new MakePlayer(30.1, 5.4, 6.7, 2.1, 0.2, 50.4, 90.8, 5.1, 3.3,'<img src="images/steph-curry.png"/>');
@@ -46,7 +44,7 @@ var george = new MakePlayer(23.1, 7, 4.1, 1.9, 0.4, 41.8, 86, 2.6, 3.3, '<img sr
 
 
 
-var players = [curry, george, durant, wall, harden, green, westbrook, towns, whiteside, leonard, lebron,davis, cousins, giannis, ];
+var players = [curry, george, durant, wall, harden, green, westbrook, towns, whiteside, leonard, lebron,davis, cousins, giannis];
 
 var randomize = function(){
   players.sort(function(a, b){
@@ -68,10 +66,17 @@ var $chip4a = $('#chip4a');
 var $chip5a = $('#chip5a');
 var $chip6a = $('#chip6a');
 var $chip7a = $('#chip7a');
-var $deal = $('#button');
-
-
-
+var $deal = $('#dealBtn');
+var $poss = $('#poss');
+var $homeChips = $('.home-chips');
+var $home = $('.home');
+var $away = $('.away');
+var turn =1;
+var $homeSidebar = $('#home-sidebar');
+var $awaySidebar = $('#away-sidebar');
+var currentHomeChip;
+var currentAwayChip;
+var newSidebar= "";
 
 $deal.on('click',function(){
   randomize();
@@ -147,4 +152,81 @@ var moveChip6A = function(){
 var moveChip7A = function(){
   $(this).html($(this).attr('image'));
   $chip7a.addClass('Achips-dealt').animate({top: +350, left: +80}, moveChip7A);
+  $poss.html('<span>❮</span>POSS');
 }
+
+//turns go as followed:
+//1.home 2.away 3.home 4.away 5.away 6.home 7.away 8.home 9.home 10.away 11.away 12.home 13.home 14.away
+
+
+//start with possession arrow to home
+function showPlayerProfile(){
+$home.on('click',function(){ //make all home chips clickable
+//clear out sidebar when any chip is clicked on
+  currentHomeChip = $(this);
+    newSidebar = $(this).attr('image')
+    newSidebar += '<ul>'
+    newSidebar +='<li>Pts:'+$(this).attr('ppg')+'</li>'
+    newSidebar +='<li>Reb:'+$(this).attr('reb')+'</li>'
+    newSidebar +='<li>Ass:'+$(this).attr('ass')+'</li>'
+    newSidebar +='<li>Stl:'+$(this).attr('stl')+'</li>'
+    newSidebar +='<li>Blk:'+$(this).attr('blk')+'</li>'
+    newSidebar +='<li>Fg%:'+$(this).attr('fg')+'</li>'
+    newSidebar +='<li>Ft%:'+$(this).attr('ft')+'</li>'
+    newSidebar +='<li>3pm:'+$(this).attr('threes')+'</li>'
+    newSidebar +='<li>Tov:'+$(this).attr('tov')+'</li>'
+    newSidebar += '</ul>'
+    newSidebar += '<button class="playBtn1">PLAY</button>'
+
+$homeSidebar.text('');
+$homeSidebar.append(newSidebar);
+$('#home-sidebar img').addClass('profilePic')
+$('.playBtn1').on('click', function(){
+    $('#home-pick').append(currentHomeChip);
+    currentHomeChip.removeAttr('style');
+    $home.off('click');
+    turn+=1;
+
+    })
+  })
+
+$away.on('click', function(){
+  currentAwayChip = $(this);
+    newSidebar = $(this).attr('image')
+    newSidebar += '<ul>'
+    newSidebar +='<li>Pts:'+$(this).attr('ppg')+'</li>'
+    newSidebar +='<li>Reb:'+$(this).attr('reb')+'</li>'
+    newSidebar +='<li>Ass:'+$(this).attr('ass')+'</li>'
+    newSidebar +='<li>Stl:'+$(this).attr('stl')+'</li>'
+    newSidebar +='<li>Blk:'+$(this).attr('blk')+'</li>'
+    newSidebar +='<li>Fg%:'+$(this).attr('fg')+'</li>'
+    newSidebar +='<li>Ft%:'+$(this).attr('ft')+'</li>'
+    newSidebar +='<li>3pm:'+$(this).attr('threes')+'</li>'
+    newSidebar +='<li>Tov:'+$(this).attr('tov')+'</li>'
+    newSidebar += '</ul>'
+    newSidebar += '<button class="playBtn2">PLAY</button>'
+  $awaySidebar.text('');
+  $awaySidebar.append(newSidebar);
+  $('#away-sidebar img').addClass('profilePic')
+  $('.playBtn2').on('click', function(){
+    $('#away-pick').append(currentAwayChip);
+    currentAwayChip.removeAttr('style');
+    })
+  })
+}
+
+function findWinner(){
+  if(($('#home-pick div').attr('sum'))>($('#away-pick div').attr('sum'))){
+    console.log("home wins");
+    //when home wins "+1" should pop up and then game score should increase by 1
+    $('#plusHome').animate({fontSize:100});
+  } else{
+    console.log('away wins');
+  }
+}
+
+showPlayerProfile();
+
+
+//
+// setInterval(switchTurns(), 1000);
