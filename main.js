@@ -77,6 +77,9 @@ var $awaySidebar = $('#away-sidebar');
 var currentHomeChip;
 var currentAwayChip;
 var newSidebar= "";
+var homeScore =0;
+var awayScore= 0;
+var delay;
 
 $deal.on('click',function(){
   randomize();
@@ -99,60 +102,59 @@ $deal.on('click',function(){
 })
 
 var moveChip1H = function(){
-  $chip1h.addClass('Hchips-dealt').animate({top: +40, right: +380}, moveChip2H)
+  $chip1h.addClass('hChips-dealt').animate({top: +40, right: +380}, moveChip2H)
 }
 var moveChip2H = function(){
   $(this).html($(this).attr('image'));
-  $chip2h.addClass('Hchips-dealt').animate({top: +40, right: +270}, moveChip3H);
+  $chip2h.addClass('hChips-dealt').animate({top: +40, right: +270}, moveChip3H);
 }
 var moveChip3H = function(){
   $(this).html($(this).attr('image'));
-  $chip3h.addClass('Hchips-dealt').animate({top: +40, right: +160}, moveChip4H);
+  $chip3h.addClass('hChips-dealt').animate({top: +40, right: +160}, moveChip4H);
 }
 var moveChip4H = function(){
   $(this).html($(this).attr('image'));
-  $chip4h.addClass('Hchips-dealt').animate({top: +350, right: +395}, moveChip5H);
+  $chip4h.addClass('hChips-dealt').animate({top: +350, right: +395}, moveChip5H);
 }
 var moveChip5H = function(){
   $(this).html($(this).attr('image'));
-  $chip5h.addClass('Hchips-dealt').animate({top: +350, right: +290}, moveChip6H);
+  $chip5h.addClass('hChips-dealt').animate({top: +350, right: +290}, moveChip6H);
 }
 var moveChip6H = function(){
   $(this).html($(this).attr('image'));
-  $chip6h.addClass('Hchips-dealt').animate({top: +350, right: +185}, moveChip7H);
+  $chip6h.addClass('hChips-dealt').animate({top: +350, right: +185}, moveChip7H);
 }
 var moveChip7H = function(){
   $(this).html($(this).attr('image'));
-  $chip7h.addClass('Hchips-dealt').animate({top: +350, right: +80}, moveChip1A);
+  $chip7h.addClass('hChips-dealt').animate({top: +350, right: +80}, moveChip1A);
 }
 var moveChip1A = function(){
   $(this).html($(this).attr('image'));
-  $chip1a.addClass('Achips-dealt').animate({top: +40, left: +380}, moveChip2A);
+  $chip1a.addClass('aChips-dealt').animate({top: +40, left: +380}, moveChip2A);
 }
 var moveChip2A = function(){
   $(this).html($(this).attr('image'));
-  $chip2a.addClass('Achips-dealt').animate({top: +40, left: +270}, moveChip3A);
+  $chip2a.addClass('aChips-dealt').animate({top: +40, left: +270}, moveChip3A);
 }
 var moveChip3A = function(){
   $(this).html($(this).attr('image'));
-  $chip3a.addClass('Achips-dealt').animate({top: +40, left: +160}, moveChip4A);
+  $chip3a.addClass('aChips-dealt').animate({top: +40, left: +160}, moveChip4A);
 }
 var moveChip4A = function(){
   $(this).html($(this).attr('image'));
-  $chip4a.addClass('Achips-dealt').animate({top: +350, left: +395}, moveChip5A);
+  $chip4a.addClass('aChips-dealt').animate({top: +350, left: +395}, moveChip5A);
 }
 var moveChip5A = function(){
   $(this).html($(this).attr('image'));
-  $chip5a.addClass('Achips-dealt').animate({top: +350, left: +290}, moveChip6A);
+  $chip5a.addClass('aChips-dealt').animate({top: +350, left: +290}, moveChip6A);
 }
 var moveChip6A = function(){
   $(this).html($(this).attr('image'));
-  $chip6a.addClass('Achips-dealt').animate({top: +350, left: +185}, moveChip7A);
+  $chip6a.addClass('aChips-dealt').animate({top: +350, left: +185}, moveChip7A);
 }
 var moveChip7A = function(){
   $(this).html($(this).attr('image'));
-  $chip7a.addClass('Achips-dealt').animate({top: +350, left: +80}, moveChip7A);
-  $poss.html('<span>❮</span>POSS');
+  $chip7a.addClass('aChips-dealt').animate({top: +350, left: +80}, moveChip7A);
 }
 
 //turns go as followed:
@@ -160,7 +162,9 @@ var moveChip7A = function(){
 
 
 //start with possession arrow to home
-function showPlayerProfile(){
+function homeTurn(){
+$poss.html('<span>❮</span>POSS');
+$away.off('click');
 $home.on('click',function(){ //make all home chips clickable
 //clear out sidebar when any chip is clicked on
   currentHomeChip = $(this);
@@ -181,15 +185,21 @@ $home.on('click',function(){ //make all home chips clickable
 $homeSidebar.text('');
 $homeSidebar.append(newSidebar);
 $('#home-sidebar img').addClass('profilePic')
+
 $('.playBtn1').on('click', function(){
     $('#home-pick').append(currentHomeChip);
     currentHomeChip.removeAttr('style');
     $home.off('click');
     turn+=1;
-
+    checkMatchup();
+    awayTurn();
     })
   })
-
+}
+function awayTurn(){
+if(turn ===2||turn===4||turn===5||turn===7||turn===10||turn===11||turn===14){
+$poss.html('POSS<span>❯</span>');
+$home.off('click');
 $away.on('click', function(){
   currentAwayChip = $(this);
     newSidebar = $(this).attr('image')
@@ -211,21 +221,53 @@ $away.on('click', function(){
   $('.playBtn2').on('click', function(){
     $('#away-pick').append(currentAwayChip);
     currentAwayChip.removeAttr('style');
-    })
-  })
+    $away.off('click');
+    checkMatchup();
+    turn +=1;
+    awayTurn();
+
+        })
+      })
+    } else{
+      homeTurn();
+    }
+  }
+
+function checkMatchup(){
+  if($('#home-pick div').attr('sum') !==undefined && $('#away-pick div').attr('sum')!== undefined){
+    findWinner();
+    delay = setTimeout(clearContent,2000);
+    awayTurn();
+  }
 }
 
 function findWinner(){
   if(($('#home-pick div').attr('sum'))>($('#away-pick div').attr('sum'))){
     console.log("home wins");
     //when home wins "+1" should pop up and then game score should increase by 1
-    $('#plusHome').animate({fontSize:100});
+    homeScore +=1;
+    $('#plusHome').animate({fontSize:150},1500, homePlusOne);
   } else{
-    console.log('away wins');
+    awayScore+=1;
+    $('#plusAway').animate({fontSize:150},1500, awayPlusOne);
   }
 }
+function homePlusOne(){
+  $('#home-score h3').text(homeScore);
+}
+function awayPlusOne(){
+  $('#away-score h3').text(awayScore);
+}
 
-showPlayerProfile();
+var clearContent = function(){
+$('#home-pick div').remove();
+$('#away-pick div').remove();
+$homeSidebar.text('');
+$awaySidebar.text('');
+$('#plusHome').css("font-size", "0px");
+$('#plusAway').css("font-size", "0px");
+}
+awayTurn();
 
 
 //

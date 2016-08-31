@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>NBA Card Game</title>
+    <link rel="fonts" href="digital-7" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
     <script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 
@@ -10,8 +11,8 @@
   <body>
     <div id="container">
       <div id="scoreboard">
-        <h1>0</h1>
-        <h2>Home</h2>
+        <h1></h1>
+        <h2 id="homeh2">Home</h2>
         <div id="home-score" class="game-score">
           <h3>0</h3>
         </div>
@@ -19,8 +20,8 @@
         <div id="away-score" class="game-score">
           <h3>0</h3>
         </div>
-        <h2>Away</h2>
-        <h1>0</h1>
+        <h2 id="awayh2">Away</h2>
+        <h1></h1>
       </div>
 
       <div id="home-sidebar"></div>
