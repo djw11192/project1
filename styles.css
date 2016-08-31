@@ -68,6 +68,21 @@ img{
   display: inline-block;
   vertical-align: top;
 }
+.playBtn1{
+  background: green;
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+.playBtn2{
+  background: green;
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+.btnStyle{
+  text-align: center;
+  padding-top: 25px;
+}
+
 .profilePic{
   padding: 5px 0 0 0;
   width: 142px;
@@ -82,6 +97,7 @@ ul{
 li{
   padding-top:20px;
   color: white;
+  font-family: digital-7;
 }
 
 #home-section{
@@ -210,4 +226,22 @@ footer{
   color: green;
   margin-top: 237px;
   padding-left: 123px;
+}
+#trophyHome{
+  width: 95px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 0px;
+  margin-left: 74px;
+  border-radius: 0px;
+}
+#trophyAway{
+  width: 95px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 0px;
+  margin-left: 74px;
+  border-radius: 0px;
 }
