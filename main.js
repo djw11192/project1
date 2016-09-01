@@ -1,6 +1,7 @@
+//
 //add variables for each chip and the deal button
 //When deal button is clicked, move the chips to their correct location
-//Create a players object with all players and their stats listed
+//Create a MakePlayer constructor with all players and their stats listed
 //after each chip is dealt, add a player picture and add that player's value to the chip
 //pop up an alert that tells the players This is a best of seven series and it's your turn when the possession arrow points to your side.  Player to go girst will alernate in a 2-2-1-1-1 fashion (this is for V2)
 //if team has possession, make their chips clickable
@@ -9,6 +10,59 @@
 //when both players "play" a chip, evaluate the stat categories with weighted values and find the chip with the higher sum
 //Add a point to the game score
 //when sum of scores is 7(or all chips played) reset the board to play again. possession start the other side now
+
+
+//when okay button is clicked, go to next page which shows the default scoring system and allows user to change it
+var $ok = $('#okBtn');
+var $rules = $('#rules')
+var $rulesList = $('#rulesList');
+var $instructions = $('#instructions');
+var newList = "";
+
+$ok.on('click', function(){
+  $rules.text('Scoring');
+  $rulesList.remove();
+  $ok.remove();
+
+  newList = '<div id="scoringList">'
+  newList +='<p>Pts:</p><p>X</p>'
+  newList += '<p class="weight">1</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Reb:</p><p>X</p>'
+  newList += '<p class="weight">1.5</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Ass:</p><p>X</p>'
+  newList += '<p class="weight">1.7</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Stl:</p><p>X</p>'
+  newList += '<p class="weight">3</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Blk:</p><p>X</p>'
+  newList += '<p class="weight">4</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Fg:</p><p>X</p>'
+  newList += '<p class="weight">(% x 10)</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Ft:</p><p>X</p>'
+  newList += '<p class="weight">(% x 10)</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>3pm:</p><p>X</p>'
+  newList += '<p class="weight">2</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList +='<p>Tov:</p><p>X</p>'
+  newList += '<p class="weight">- 1.5</p>'
+  newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
+  newList += '</div>'
+
+  $instructions.append(newList)
+})
+
+//click buttons change the weighting of stats
+function changeWeights(){
+  btnLeft.on('click', function(){
+    
+  })
+}
 
 
 
@@ -43,9 +97,6 @@ var whiteside = new MakePlayer(14.2, 11.8, 0.4, 0.6, 3.7, 60.6, 65, 0, 1.9, '<im
 var green = new MakePlayer(14, 9.5, 7.4, 1.5, 1.4, 49, 69.6, 1.2, 3.2, '<img src="images/green.png"/>', "Green");
 var wall = new MakePlayer(19.9, 4.9, 10.2, 1.9, 0.8, 42.4, 79.1, 1.5, 4.1, '<img src="images/john_wall.png"/>', "Wall");
 var george = new MakePlayer(23.1, 7, 4.1, 1.9, 0.4, 41.8, 86, 2.6, 3.3, '<img src="images/paul_george.png"/>', "George");
-
-
-
 
 
 var players = [curry, george, durant, wall, harden, green, westbrook, towns, whiteside, leonard, lebron,davis, cousins, giannis];
@@ -86,31 +137,31 @@ var awayScore= 0;
 var delay;
 
 function dealChips(){
-$deal.on('click',function(){
-  $deal.off();
-  randomize();
-  console.log('deal');
-  $('#plusHome img').remove();
-  $('#plusAway img').remove();
+  $deal.on('click',function(){
+    $deal.off();
+    randomize();
+    console.log('deal');
+    $('#plusHome img').remove();
+    $('#plusAway img').remove();
 
-  awayTurn();
+    awayTurn();
 
-  $chip1h.attr(players[0]);
-  $chip2h.attr(players[1]);
-  $chip3h.attr(players[2]);
-  $chip4h.attr(players[3]);
-  $chip5h.attr(players[4]);
-  $chip6h.attr(players[5]);
-  $chip7h.attr(players[6]);
-  $chip1a.attr(players[7]);
-  $chip2a.attr(players[8]);
-  $chip3a.attr(players[9]);
-  $chip4a.attr(players[10]);
-  $chip5a.attr(players[11]);
-  $chip6a.attr(players[12]);
-  $chip7a.attr(players[13]);
+    $chip1h.attr(players[0]);
+    $chip2h.attr(players[1]);
+    $chip3h.attr(players[2]);
+    $chip4h.attr(players[3]);
+    $chip5h.attr(players[4]);
+    $chip6h.attr(players[5]);
+    $chip7h.attr(players[6]);
+    $chip1a.attr(players[7]);
+    $chip2a.attr(players[8]);
+    $chip3a.attr(players[9]);
+    $chip4a.attr(players[10]);
+    $chip5a.attr(players[11]);
+    $chip6a.attr(players[12]);
+    $chip7a.attr(players[13]);
 
-  moveChip1H();
+    moveChip1H();
   })
 }
 
@@ -180,11 +231,14 @@ var lastChip = function(){
 
 //start with possession arrow to home
 function homeTurn(){
-$poss.html('<span>❮</span>POSS');
-$away.off('click');
-$home.on('click',function(){ //make all home chips clickable
-//clear out sidebar when any chip is clicked on
-  currentHomeChip = $(this);
+  $poss.html('<span>❮</span>POSS');
+  $away.off('click');
+
+  //make all home chips clickable and append player profile to sidebar
+  $home.on('click',function(){
+    currentHomeChip = $(this); //saves the chip they clicked on in a variable for later use
+
+    //content to append to sidebar
     newSidebar = $(this).attr('image')
     newSidebar += '<p class="name">'+$(this).attr('name')+'</p>'
     newSidebar += '<ul>'
@@ -193,105 +247,112 @@ $home.on('click',function(){ //make all home chips clickable
     newSidebar +='<li>Ass:  '+$(this).attr('ass')+'</li>'
     newSidebar +='<li>Stl:  '+$(this).attr('stl')+'</li>'
     newSidebar +='<li>Blk:  '+$(this).attr('blk')+'</li>'
-    newSidebar +='<li>Fg:      '+$(this).attr('fg')+'%'+'</li>'
-    newSidebar +='<li>Ft:      '+$(this).attr('ft')+'%'+'</li>'
-    newSidebar +='<li>3pm:      '+$(this).attr('threes')+'</li>'
-    newSidebar +='<li>Tov:      '+$(this).attr('tov')+'</li>'
-    newSidebar += '</ul>'
-    newSidebar += '<div class="btnStyle"><button class="playBtn1">PLAY</button></div>'
-
-$homeSidebar.text('');
-$homeSidebar.append(newSidebar);
-$('#home-sidebar img').addClass('profilePic')
-
-$('.playBtn1').on('click', function(){
-    $('.playBtn1').hide();
-    $('#home-pick').append(currentHomeChip);
-    currentHomeChip.removeAttr('style');
-    $home.off('click');
-    $('.playBtn1').off();
-    turn+=1;
-    checkMatchup();
-    awayTurn();
-    })
-  })
-}
-function awayTurn(){
-if(turn ===2||turn===4||turn===5||turn===7||turn===10||turn===11||turn===14){
-$poss.html('POSS<span>❯</span>');
-$home.off('click');
-$away.on('click', function(){
-  currentAwayChip = $(this);
-    newSidebar = $(this).attr('image')
-    newSidebar += '<p class="name">'+$(this).attr('name')+'</p>'
-    newSidebar += '<ul>'
-    newSidebar +='<li>Pts:  '+$(this).attr('ppg')+'</li>'
-    newSidebar +='<li>Reb:  '+$(this).attr('reb')+'</li>'
-    newSidebar +='<li>Ass:  '+$(this).attr('ass')+'</li>'
-    newSidebar +='<li>Stl:  '+$(this).attr('stl')+'</li>'
-    newSidebar +='<li>Blk:  '+$(this).attr('blk')+'</li>'
-    newSidebar +='<li>Fg%:  '+$(this).attr('fg')+'%'+'</li>'
-    newSidebar +='<li>Ft%:  '+$(this).attr('ft')+'%'+'</li>'
+    newSidebar +='<li>Fg:  '+$(this).attr('fg')+'%'+'</li>'
+    newSidebar +='<li>Ft:  '+$(this).attr('ft')+'%'+'</li>'
     newSidebar +='<li>3pm:  '+$(this).attr('threes')+'</li>'
     newSidebar +='<li>Tov:  '+$(this).attr('tov')+'</li>'
     newSidebar += '</ul>'
-    newSidebar += '<div class="btnStyle"><button class="playBtn2">PLAY</button></div>'
-  $awaySidebar.text('');
-  $awaySidebar.append(newSidebar);
-  $('#away-sidebar img').addClass('profilePic')
-  $('.playBtn2').on('click', function(){
-    $('.playBtn2').hide();
-    $('#away-pick').append(currentAwayChip);
-    currentAwayChip.removeAttr('style');
-    $away.off('click');
-    $('.playBtn2').off();
-    checkMatchup();
-    turn +=1;
-    awayTurn();
+    newSidebar += '<div class="btnStyle"><button class="playBtn1">PLAY</button></div>'
 
-        })
+    $homeSidebar.text('');
+    $homeSidebar.append(newSidebar);
+    $('#home-sidebar img').addClass('profilePic')
+
+    //when 'play' is clicked, the chip is no longer displayed in current location and is appended to an empty div near the center of the court. It also runs the functions to check for switching turns and finding a winner
+    $('.playBtn1').on('click', function(){
+        $('.playBtn1').hide();
+        $('#home-pick').append(currentHomeChip);
+        currentHomeChip.removeAttr('style');
+        $home.off('click');
+        $('.playBtn1').off();
+        turn+=1;
+        checkMatchup();
+        awayTurn();
+    })
+  })
+}
+
+//awayTurn functionality is same as homeTurn, but its initial if statement distinguishes who can make a move
+function awayTurn(){
+  if(turn ===2||turn===4||turn===5||turn===7||turn===10||turn===11||turn===14){
+    $poss.html('POSS<span>❯</span>');
+    $home.off('click');
+    $away.on('click', function(){
+      currentAwayChip = $(this);
+      newSidebar = $(this).attr('image')
+      newSidebar += '<p class="name">'+$(this).attr('name')+'</p>'
+      newSidebar += '<ul>'
+      newSidebar +='<li>Pts:  '+$(this).attr('ppg')+'</li>'
+      newSidebar +='<li>Reb:  '+$(this).attr('reb')+'</li>'
+      newSidebar +='<li>Ass:  '+$(this).attr('ass')+'</li>'
+      newSidebar +='<li>Stl:  '+$(this).attr('stl')+'</li>'
+      newSidebar +='<li>Blk:  '+$(this).attr('blk')+'</li>'
+      newSidebar +='<li>Fg%:  '+$(this).attr('fg')+'%'+'</li>'
+      newSidebar +='<li>Ft%:  '+$(this).attr('ft')+'%'+'</li>'
+      newSidebar +='<li>3pm:  '+$(this).attr('threes')+'</li>'
+      newSidebar +='<li>Tov:  '+$(this).attr('tov')+'</li>'
+      newSidebar += '</ul>'
+      newSidebar += '<div class="btnStyle"><button class="playBtn2">PLAY</button></div>'
+      $awaySidebar.text('');
+      $awaySidebar.append(newSidebar);
+      $('#away-sidebar img').addClass('profilePic')
+      $('.playBtn2').on('click', function(){
+        $('.playBtn2').hide();
+        $('#away-pick').append(currentAwayChip);
+        currentAwayChip.removeAttr('style');
+        $away.off('click');
+        $('.playBtn2').off();
+        checkMatchup();
+        turn +=1;
+        awayTurn();
       })
-    } else{
-      homeTurn();
-    }
+    })
+  } else {
+    homeTurn();
   }
+}
 
 function checkMatchup(){
-  if($('#home-pick div').attr('sum') !==undefined && $('#away-pick div').attr('sum')!== undefined){
+  if($('#home-pick div').attr('sum') !==undefined
+  && $('#away-pick div').attr('sum')!== undefined){
     findWinner();
     delay = setTimeout(clearContent,2000);
     awayTurn();
   }
 }
 
+//when a team wins, "+1" will pop up and the game score will increase by 1
 function findWinner(){
-  if(($('#home-pick div').attr('sum'))>($('#away-pick div').attr('sum'))){
+  if(($('#home-pick div').attr('sum'))>
+  ($('#away-pick div').attr('sum'))){
     console.log("home wins");
-    //when home wins "+1" should pop up and then game score should increase by 1
     homeScore +=1;
     $('#plusHome').animate({fontSize:150},1500, homePlusOne);
-  } else{
+  } else {
+    console.log("away wins");
     awayScore+=1;
     $('#plusAway').animate({fontSize:150},1500, awayPlusOne);
   }
 }
+
 function homePlusOne(){
   $('#home-score h3').text(homeScore);
 }
+
 function awayPlusOne(){
   $('#away-score h3').text(awayScore);
 }
 
 var clearContent = function(){
-$('#home-pick div').remove();
-$('#away-pick div').remove();
-$homeSidebar.text('');
-$awaySidebar.text('');
-$('#plusHome').css("font-size", "0px");
-$('#plusAway').css("font-size", "0px");
+  $('#home-pick div').remove();
+  $('#away-pick div').remove();
+  $homeSidebar.text('');
+  $awaySidebar.text('');
+  $('#plusHome').css("font-size", "0px");
+  $('#plusAway').css("font-size", "0px");
 
 //reset game when it's over
-resetGame();
+  resetGame();
 }
 
 function resetGame(){
@@ -331,16 +392,17 @@ function appendChips(){
   $('.away-chips').append($chip5a);
   $('.away-chips').append($chip6a);
   $('.away-chips').append($chip7a);
-};
+}
+
 function showTrophyHome(){
   $('#plusHome').append('<img src="images/NBA-TROPHY.png" class="trophyHome"/>');
   setInterval(function(){
     $('.trophyHome').toggleClass('toggleHome')},400)
-  }
+}
 function showTrophyAway(){
   $('#plusAway').append('<img src="images/NBA-TROPHY.png" class="trophyAway"/>');
   setInterval(function(){
     $('.trophyAway').toggleClass('toggleAway')},400)
-  }
+}
 
 dealChips();

@@ -14,7 +14,6 @@
   text-align: center;
   font-size:20px;
   margin-bottom: 0;
-
 }
 .ruleNum{
   font-family: 'Architects Daughter', cursive;
@@ -37,7 +36,25 @@
 #okBtn:focus{
   outline: 0;
 }
-
+#scoringList{
+  padding-left: 90px;
+}
+#scoringList p{
+  font-family: 'Architects Daughter', cursive;
+  color: white;
+  padding: 20px 10px 0 10px;
+  margin: 0 auto;
+  font-size:17px;
+  display: inline-block;
+  width: 20%;
+}
+.btnLeft{
+  margin-left: 30px;
+  font-weight: 900;
+}
+.btnRight{
+  font-weight: 900;
+}
 body{
   background: url("images/grey_wash_wall.png");
 }
@@ -50,6 +67,7 @@ body{
 #scoreboard{
   height: 80px;
   width: 100%;
+  /*background: url("images/scoreboard_background.jpg")*/
   background: #2b2727;
   vertical-align: top;
 }
