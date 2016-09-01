@@ -1,3 +1,43 @@
+#instructions{
+  position: absolute;
+  height: 490px;
+  width: 517px;
+  background: rgba(7, 50, 84, 0.97);
+  margin: 8px 0 0 244px;
+  border-radius: 30px;
+  z-index: 1;
+  border: 5px solid black;
+}
+#rules{
+  font-family: 'Architects Daughter', cursive;
+  color: white;
+  text-align: center;
+  font-size:20px;
+  margin-bottom: 0;
+
+}
+.ruleNum{
+  font-family: 'Architects Daughter', cursive;
+  color: white;
+  padding: 10px 10px 30px 10px;
+  font-size:17px;
+}
+#ok{
+  text-align:center;
+}
+#okBtn{
+  background: black;
+  border-radius: 100px;
+  height: 40px;
+  color: white;
+  width: 80px;
+  font-size: 23px;
+  font-family: 'Architects Daughter', cursive;
+}
+#okBtn:focus{
+  outline: 0;
+}
+
 body{
   background: url("images/grey_wash_wall.png");
 }
@@ -16,8 +56,8 @@ body{
 h1, h2, h3{
   margin: 0;
   display:inline-block;
-  font-family: digital-7;
-
+  font-family: 'digital-7', sans-serif;
+  font-weight: 500;
 }
 h1{
   color:red;
@@ -107,10 +147,10 @@ ul{
   padding-left: 15px;
   margin-top: 0px;
 }
-li{
+ul li{
   padding-top:20px;
   color: white;
-  font-family: digital-7;
+  font-family: 'digital-7', sans-serif;
 }
 
 #home-section{
