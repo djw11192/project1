@@ -73,10 +73,17 @@ img{
   border-radius: 15px;
   padding: 10px 20px;
 }
+.playBtn1:focus{
+  outline:0;
+}
+.playBtn2:focus{
+  outline:0;
+}
 .playBtn2{
   background: green;
   border-radius: 15px;
   padding: 10px 20px;
+
 }
 .btnStyle{
   text-align: center;
@@ -88,6 +95,12 @@ img{
   width: 142px;
   height: 103px;
   border-radius: 0px;
+}
+.name{
+  margin: 0 auto;
+  text-align:center;
+  color: white;
+  font-family: helvetica;
 }
 ul{
   list-style-type: none;
@@ -138,8 +151,10 @@ li{
   margin: 10px 27.5px;
 }
 span{
-  font-weight:800;
+  font-weight:900;
   color: red;
+  text-align:left;
+
 }
 #dealBtn{
   text-align: center;
@@ -227,16 +242,21 @@ footer{
   margin-top: 237px;
   padding-left: 123px;
 }
-#trophyHome{
+.trophyHome{
   width: 95px;
   padding-top: 0px;
   padding-left: 0px;
   padding-right: 0px;
   margin-top: 0px;
-  margin-left: 74px;
+  margin-left: 0px;
+  margin-bottom:50px;
   border-radius: 0px;
+  transform: rotate(-15deg);
 }
-#trophyAway{
+.toggleHome{
+  transform: rotate(30deg)
+}
+.trophyAway{
   width: 95px;
   padding-top: 0px;
   padding-left: 0px;
@@ -244,4 +264,8 @@ footer{
   margin-top: 0px;
   margin-left: 74px;
   border-radius: 0px;
+  transform: rotate(-15deg);
+}
+.toggleAway{
+  transform: rotate(30deg)
 }

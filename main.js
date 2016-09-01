@@ -13,7 +13,7 @@
 
 
 //make a constructor to create players
-function MakePlayer(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image, sum){
+function MakePlayer(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image, name, sum){
   this.ppg = ppg;
   this.reb = reb;
   this.ass = ass;
@@ -24,23 +24,25 @@ function MakePlayer(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image, sum){
   this.threes = threes;
   this.tov = tov;
   this.image= image;
-  this.sum =  (this.ppg+(this.reb*1.5)+(this.ass*1.7)+(this.stl*3)+(this.blk*4.5)+(this.fg/10)+(this.ft/10)+(this.threes*2)+(this.tov*-1.5));
+  this.name=name;
+  this.sum =
+   (this.ppg+(this.reb*1.5)+(this.ass*1.7)+(this.stl*3)+(this.blk*4.5)+(this.fg/10)+(this.ft/10)+(this.threes*2)+(this.tov*-1.5));
 }
 
-var curry = new MakePlayer(30.1, 5.4, 6.7, 2.1, 0.2, 50.4, 90.8, 5.1, 3.3,'<img src="images/steph-curry.png"/>');
-var durant = new MakePlayer(28.2, 8.2, 5, 1, 1.2, 50.5, 89.8, 2.6, 3.5, '<img src="images/durant.png"/>');
-var harden = new MakePlayer(29, 6.1, 7.5, 1.7, 0.6, 43.9, 86, 2.9, 4.6, '<img src="images/harden.png"/>');
-var westbrook = new MakePlayer(23.5, 7.4, 10.4, 2, 0.3, 45.4, 81.2, 1.3, 4.3, '<img src="images/westbrook.png"/>');
-var towns = new MakePlayer(18.3, 10.5, 2, 0.7, 1.7, 54.2, 81.1, 0.4, 2.2, '<img src="images/towns.png"/>');
-var leonard = new MakePlayer(21.2, 6.8, 2.6, 1.8, 1, 50.6, 87.4, 1.8, 1.5, '<img src="images/kawhi.png"/>');
-var davis = new MakePlayer(24.3, 10.3, 1.9, 1.3, 2, 49.3, 75.8, 0.6, 2, '<img src="images/anthony davis.png"/>');
-var lebron = new MakePlayer(25.3, 7.4, 6.8, 1.4, 0.6, 52, 73.1, 1.1, 3.3, '<img src="images/lebron.png"/>');
-var cousins = new MakePlayer(26.9, 11.5, 3.3, 1.6, 1.4, 45.1, 71.8, 1.1, 3.8, '<img src="images/cousins.png"/>');
-var giannis = new MakePlayer(16.9, 7.7, 4.3, 1.2, 1.4, 50.6, 72.4, 0.4, 2.6, '<img src="images/giannis.png"/>');
-var whiteside = new MakePlayer(14.2, 11.8, 0.4, 0.6, 3.7, 60.6, 65, 0, 1.9, '<img src="images/whiteside.png"/>');
-var green = new MakePlayer(14, 9.5, 7.4, 1.5, 1.4, 49, 69.6, 1.2, 3.2, '<img src="images/green.png"/>');
-var wall = new MakePlayer(19.9, 4.9, 10.2, 1.9, 0.8, 42.4, 79.1, 1.5, 4.1, '<img src="images/john_wall.png"/>');
-var george = new MakePlayer(23.1, 7, 4.1, 1.9, 0.4, 41.8, 86, 2.6, 3.3, '<img src="images/paul_george.png"/>');
+var curry = new MakePlayer(30.1, 5.4, 6.7, 2.1, 0.2, 50.4, 90.8, 5.1, 3.3, '<img src="images/steph-curry.png"/>', "Curry");
+var durant = new MakePlayer(28.2, 8.2, 5, 1, 1.2, 50.5, 89.8, 2.6, 3.5, '<img src="images/durant.png"/>', "Durant");
+var harden = new MakePlayer(29, 6.1, 7.5, 1.7, 0.6, 43.9, 86, 2.9, 4.6, '<img src="images/harden.png"/>', "Harden");
+var westbrook = new MakePlayer(23.5, 7.4, 10.4, 2, 0.3, 45.4, 81.2, 1.3, 4.3, '<img src="images/westbrook.png"/>', "Westbrook");
+var towns = new MakePlayer(18.3, 10.5, 2, 0.7, 1.7, 54.2, 81.1, 0.4, 2.2, '<img src="images/towns.png"/>', "Towns");
+var leonard = new MakePlayer(21.2, 6.8, 2.6, 1.8, 1, 50.6, 87.4, 1.8, 1.5, '<img src="images/kawhi.png"/>', "Leonard");
+var davis = new MakePlayer(24.3, 10.3, 1.9, 1.3, 2, 49.3, 75.8, 0.6, 2, '<img src="images/anthony davis.png"/>', "Davis");
+var lebron = new MakePlayer(25.3, 7.4, 6.8, 1.4, 0.6, 52, 73.1, 1.1, 3.3, '<img src="images/lebron.png"/>', "James");
+var cousins = new MakePlayer(26.9, 11.5, 3.3, 1.6, 1.4, 45.1, 71.8, 1.1, 3.8, '<img src="images/cousins.png"/>', "Cousins");
+var giannis = new MakePlayer(16.9, 7.7, 4.3, 1.2, 1.4, 50.6, 72.4, 0.4, 2.6, '<img src="images/giannis.png"/>', "Antetokounmpo");
+var whiteside = new MakePlayer(14.2, 11.8, 0.4, 0.6, 3.7, 60.6, 65, 0, 1.9, '<img src="images/whiteside.png"/>', "Whiteside");
+var green = new MakePlayer(14, 9.5, 7.4, 1.5, 1.4, 49, 69.6, 1.2, 3.2, '<img src="images/green.png"/>', "Green");
+var wall = new MakePlayer(19.9, 4.9, 10.2, 1.9, 0.8, 42.4, 79.1, 1.5, 4.1, '<img src="images/john_wall.png"/>', "Wall");
+var george = new MakePlayer(23.1, 7, 4.1, 1.9, 0.4, 41.8, 86, 2.6, 3.3, '<img src="images/paul_george.png"/>', "George");
 
 
 
@@ -85,9 +87,14 @@ var delay;
 
 function dealChips(){
 $deal.on('click',function(){
-  console.log('deal');
-  awayTurn();
+  $deal.off();
   randomize();
+  console.log('deal');
+  $('#plusHome img').remove();
+  $('#plusAway img').remove();
+
+  awayTurn();
+
   $chip1h.attr(players[0]);
   $chip2h.attr(players[1]);
   $chip3h.attr(players[2]);
@@ -179,12 +186,13 @@ $home.on('click',function(){ //make all home chips clickable
 //clear out sidebar when any chip is clicked on
   currentHomeChip = $(this);
     newSidebar = $(this).attr('image')
+    newSidebar += '<p class="name">'+$(this).attr('name')+'</p>'
     newSidebar += '<ul>'
-    newSidebar +='<li>Pts:      '+$(this).attr('ppg')+'</li>'
-    newSidebar +='<li>Reb:      '+$(this).attr('reb')+'</li>'
-    newSidebar +='<li>Ass:      '+$(this).attr('ass')+'</li>'
-    newSidebar +='<li>Stl:      '+$(this).attr('stl')+'</li>'
-    newSidebar +='<li>Blk:      '+$(this).attr('blk')+'</li>'
+    newSidebar +='<li>Pts:  '+$(this).attr('ppg')+'</li>'
+    newSidebar +='<li>Reb:  '+$(this).attr('reb')+'</li>'
+    newSidebar +='<li>Ass:  '+$(this).attr('ass')+'</li>'
+    newSidebar +='<li>Stl:  '+$(this).attr('stl')+'</li>'
+    newSidebar +='<li>Blk:  '+$(this).attr('blk')+'</li>'
     newSidebar +='<li>Fg:      '+$(this).attr('fg')+'%'+'</li>'
     newSidebar +='<li>Ft:      '+$(this).attr('ft')+'%'+'</li>'
     newSidebar +='<li>3pm:      '+$(this).attr('threes')+'</li>'
@@ -197,6 +205,7 @@ $homeSidebar.append(newSidebar);
 $('#home-sidebar img').addClass('profilePic')
 
 $('.playBtn1').on('click', function(){
+    $('.playBtn1').hide();
     $('#home-pick').append(currentHomeChip);
     currentHomeChip.removeAttr('style');
     $home.off('click');
@@ -214,6 +223,7 @@ $home.off('click');
 $away.on('click', function(){
   currentAwayChip = $(this);
     newSidebar = $(this).attr('image')
+    newSidebar += '<p class="name">'+$(this).attr('name')+'</p>'
     newSidebar += '<ul>'
     newSidebar +='<li>Pts:  '+$(this).attr('ppg')+'</li>'
     newSidebar +='<li>Reb:  '+$(this).attr('reb')+'</li>'
@@ -230,6 +240,7 @@ $away.on('click', function(){
   $awaySidebar.append(newSidebar);
   $('#away-sidebar img').addClass('profilePic')
   $('.playBtn2').on('click', function(){
+    $('.playBtn2').hide();
     $('#away-pick').append(currentAwayChip);
     currentAwayChip.removeAttr('style');
     $away.off('click');
@@ -286,20 +297,20 @@ resetGame();
 function resetGame(){
   if(homeScore+awayScore===7){
     turn=1;
+    $('#away-score h3').text('0');
+    $('#home-score h3').text('0');
     dealChips();
     appendChips();
-    homeScore= 0;
-    awayScore = 0;
-    $('#away-score h3').text(awayScore);
-    $('#home-score h3').text(homeScore);
     $('.home img').remove();
     $('.away img').remove();
     if(homeScore>awayScore){
-      console.long("home champ")
+      console.log("home champ")
       showTrophyHome();
+      homeScore=0;
     } else {
       console.log('away champ');
       showTrophyAway();
+      awayScore=0;
     }
   }
 }
@@ -322,10 +333,14 @@ function appendChips(){
   $('.away-chips').append($chip7a);
 };
 function showTrophyHome(){
-  $('#plusHome').append('<img src="images/NBA-TROPHY.png" id="trophyHome"/>');
-}
+  $('#plusHome').append('<img src="images/NBA-TROPHY.png" class="trophyHome"/>');
+  setInterval(function(){
+    $('.trophyHome').toggleClass('toggleHome')},400)
+  }
 function showTrophyAway(){
-  $('#plusAway').append('<img src="images/NBA-TROPHY.png" id="trophyAway"/>');
-}
+  $('#plusAway').append('<img src="images/NBA-TROPHY.png" class="trophyAway"/>');
+  setInterval(function(){
+    $('.trophyAway').toggleClass('toggleAway')},400)
+  }
 
 dealChips();
