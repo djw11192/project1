@@ -18,7 +18,7 @@ The team to "play" first is based on a 2-2-1-1-1 series format.  The possession 
 
 ##To play
 
-Visit https://github.com/djw11192/project1, or download a .zip of this repo and open index.html in your browser.
+Visit https://djw11192.github.io/project1/, or download a .zip of this repo and open index.html in your browser.
 
 ##Development Process
 
