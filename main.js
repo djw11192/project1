@@ -23,7 +23,7 @@ var weights;
 var customWeights = [];
 
 
-
+//click ok to remove rules page and append scoring options page
 $ok.on('click', function(){
   $rules.text('Scoring');
   $rulesList.remove();
