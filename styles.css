@@ -9,7 +9,7 @@
   border: 5px solid black;
 
   /*testing:*/
-  display:none;
+  /*display:none;*/
 }
 #rules{
   font-family: 'Architects Daughter', cursive;
@@ -24,10 +24,10 @@
   padding: 10px 10px 30px 10px;
   font-size:17px;
 }
-#ok{
+.ok{
   text-align:center;
 }
-#okBtn{
+#okBtn, #okBtn2{
   background: black;
   border-radius: 100px;
   height: 40px;
@@ -36,11 +36,17 @@
   font-size: 23px;
   font-family: 'Architects Daughter', cursive;
 }
+#okBtn2{
+  margin: 47px 0px 0 0; 
+}
 #okBtn:focus{
   outline: 0;
 }
+#okBtn2:focus{
+  outline: 0;
+}
 #scoringList{
-  padding-left: 90px;
+  padding-left: 60px;
 }
 #scoringList p{
   font-family: 'Architects Daughter', cursive;
@@ -50,6 +56,9 @@
   font-size:17px;
   display: inline-block;
   width: 20%;
+}
+#scoringList div{
+  height: 31px;
 }
 .btnLeft{
   margin-left: 30px;

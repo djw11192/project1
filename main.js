@@ -14,10 +14,13 @@
 
 //when okay button is clicked, go to next page which shows the default scoring system and allows user to change it
 var $ok = $('#okBtn');
+var $ok2 = $('#okBtn2');
 var $rules = $('#rules')
 var $rulesList = $('#rulesList');
 var $instructions = $('#instructions');
 var newList = "";
+var weights;
+var customWeights = [];
 
 
 
@@ -53,13 +56,13 @@ $ok.on('click', function(){
   newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
   newList += '</div>'
   newList += '<div>'
-  newList +='<p>Fg:</p><p>X</p>'
-  newList += '<p class="weight">(% x 10)</p>'
+  newList +='<p>Fg %:</p><p>X</p>'
+  newList += '<p class="weight">10</p>'
   newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
   newList += '</div>'
   newList += '<div>'
-  newList +='<p>Ft:</p><p>X</p>'
-  newList += '<p class="weight">(% x 10)</p>'
+  newList +='<p>Ft %:</p><p>X</p>'
+  newList += '<p class="weight">10</p>'
   newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
   newList += '</div>'
   newList += '<div>'
@@ -69,15 +72,25 @@ $ok.on('click', function(){
   newList += '</div>'
   newList += '<div>'
   newList +='<p>Tov:</p><p>X</p>'
-  newList += '<p class="weight">- 1.5</p>'
+  newList += '<p class="weight">-1.5</p>'
   newList += '<button class="btnLeft">-</button><button class=btnRight>+</button>'
   newList += '</div>'
   newList += '</div>'
+  newList += '<br>'
+  newList += '<div class="ok"><button id="okBtn2">OK</button></div>'
 
   $instructions.append(newList)
 
-  changeWeights()
+  changeWeights();
+  statWeights();
+
+  $('#okBtn2').on('click', function(){
+    $('#instructions').remove();
+    $('#okBtn2').remove();
+  })
 })
+
+
 
 //click buttons change the weighting of stats
 // $(this).hasClass('btnLeft') ? -.1 : .1
@@ -91,6 +104,11 @@ function changeWeights(){
   })
 }
 
+function statWeights(){
+for(i=0; i<9; i++ ){
+  customWeights.push(Number($('.weight').eq(i).text()));
+  }
+}
 
 
 //make a constructor to create players
@@ -106,33 +124,54 @@ function Player(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image, name, sum){
   this.tov = tov;
   this.image= image;
   this.name=name;
-  this.sum =
-   (this.ppg+(this.reb*1.5)+(this.ass*1.7)+(this.stl*3)+(this.blk*4.5)+(this.fg/10)+(this.ft/10)+(this.threes*2)+(this.tov*-1.5));
+  this.sum = 0;
+  //  ((eval((this.ppg) * customWeights[0]))+(eval((this.reb)* customWeights[1]))+(eval((this.ass)*customWeights[2]))+(eval((this.stl)*customWeights[3]))+(eval((this.blk)*customWeights[4]))+(eval((this.fg/10)*customWeights[5]))+(eval((this.ft/10)*customWeights[6]))+(eval((this.threes)*customWeights[7]))+(eval(this.tov*customWeights[8])))
 }
 
 var players = [
-  new Player(30.1, 5.4, 6.7, 2.1, 0.2, 50.4, 90.8, 5.1, 3.3, '<img src="images/steph-curry.png"/>', "Curry"),
-  new Player(28.2, 8.2, 5, 1, 1.2, 50.5, 89.8, 2.6, 3.5, '<img src="images/durant.png"/>', "Durant"),
-  new Player(29, 6.1, 7.5, 1.7, 0.6, 43.9, 86, 2.9, 4.6, '<img src="images/harden.png"/>', "Harden"),
-  new Player(23.5, 7.4, 10.4, 2, 0.3, 45.4, 81.2, 1.3, 4.3, '<img src="images/westbrook.png"/>', "Westbrook"),
-  new Player(18.3, 10.5, 2, 0.7, 1.7, 54.2, 81.1, 0.4, 2.2, '<img src="images/towns.png"/>', "Towns"),
-  new Player(21.2, 6.8, 2.6, 1.8, 1, 50.6, 87.4, 1.8, 1.5, '<img src="images/kawhi.png"/>', "Leonard"),
-  new Player(24.3, 10.3, 1.9, 1.3, 2, 49.3, 75.8, 0.6, 2, '<img src="images/anthony davis.png"/>', "Davis"),
-  new Player(25.3, 7.4, 6.8, 1.4, 0.6, 52, 73.1, 1.1, 3.3, '<img src="images/lebron.png"/>', "James"),
-  new Player(26.9, 11.5, 3.3, 1.6, 1.4, 45.1, 71.8, 1.1, 3.8, '<img src="images/cousins.png"/>', "Cousins"),
-  new Player(16.9, 7.7, 4.3, 1.2, 1.4, 50.6, 72.4, 0.4, 2.6, '<img src="images/giannis.png"/>', "Antetokounmpo"),
-  new Player(14.2, 11.8, 0.4, 0.6, 3.7, 60.6, 65, 0, 1.9, '<img src="images/whiteside.png"/>', "Whiteside"),
-  new Player(14, 9.5, 7.4, 1.5, 1.4, 49, 69.6, 1.2, 3.2, '<img src="images/green.png"/>', "Green"),
-  new Player(19.9, 4.9, 10.2, 1.9, 0.8, 42.4, 79.1, 1.5, 4.1, '<img src="images/john_wall.png"/>', "Wall"),
-  new Player(23.1, 7, 4.1, 1.9, 0.4, 41.8, 86, 2.6, 3.3, '<img src="images/paul_george.png"/>', "George")
+  new Player(30.1, 5.4, 6.7, 2.1, 0.2, .50, .90, 5.1, 3.3, '<img src="images/steph-curry.png"/>', "Curry"),
+  new Player(28.2, 8.2, 5, 1, 1.2, .51, .89, 2.6, 3.5, '<img src="images/durant.png"/>', "Durant"),
+  new Player(29, 6.1, 7.5, 1.7, 0.6, .44, .86, 2.9, 4.6, '<img src="images/harden.png"/>', "Harden"),
+  new Player(23.5, 7.4, 10.4, 2, 0.3, .45, .81, 1.3, 4.3, '<img src="images/westbrook.png"/>', "Westbrook"),
+  new Player(18.3, 10.5, 2, 0.7, 1.7, .54, .81, 0.4, 2.2, '<img src="images/towns.png"/>', "Towns"),
+  new Player(21.2, 6.8, 2.6, 1.8, 1, .51, .87, 1.8, 1.5, '<img src="images/kawhi.png"/>', "Leonard"),
+  new Player(24.3, 10.3, 1.9, 1.3, 2, .49, .76, 0.6, 2, '<img src="images/anthony davis.png"/>', "Davis"),
+  new Player(25.3, 7.4, 6.8, 1.4, 0.6, .52, .73, 1.1, 3.3, '<img src="images/lebron.png"/>', "James"),
+  new Player(26.9, 11.5, 3.3, 1.6, 1.4, .45, .72, 1.1, 3.8, '<img src="images/cousins.png"/>', "Cousins"),
+  new Player(16.9, 7.7, 4.3, 1.2, 1.4, .51, .72, 0.4, 2.6, '<img src="images/giannis.png"/>', "Antetokounmpo"),
+  new Player(14.2, 11.8, 0.4, 0.6, 3.7, .61, .65, 0, 1.9, '<img src="images/whiteside.png"/>', "Whiteside"),
+  new Player(14, 9.5, 7.4, 1.5, 1.4, .49, .7, 1.2, 3.2, '<img src="images/green.png"/>', "Green"),
+  new Player(19.9, 4.9, 10.2, 1.9, 0.8, .42, .79, 1.5, 4.1, '<img src="images/john_wall.png"/>', "Wall"),
+  new Player(23.1, 7, 4.1, 1.9, 0.4, .42, .86, 2.6, 3.3, '<img src="images/paul_george.png"/>', "George")
 ]
 
-playersInGame=[];
+var playersInGame=[];
 function setArray(){
   for(i=0; i<14; i++){
     playersInGame.push(players[i])
   }
 }
+
+function setPlayerVal(){
+  for(i=0; i<playersInGame.length; i++){
+    playersInGame[i].sum =
+    eval(playersInGame[i].ppg)*customWeights[0]+
+    eval(playersInGame[i].ass)*customWeights[1]+
+    eval(playersInGame[i].reb)*customWeights[2]+
+    eval(playersInGame[i].stl)*customWeights[3]+
+    eval(playersInGame[i].blk)*customWeights[4]+
+    eval(playersInGame[i].fg)*customWeights[5]+
+    eval(playersInGame[i].ft)*customWeights[6]+
+    eval(playersInGame[i].threes)*customWeights[7]+
+    eval(playersInGame[i].tov)*customWeights[8]
+
+    // playersInGame[i].sum = playersInGame[i].ppg + playersInGame[i].ass+
+    // playersInGame[i].reb + playersInGame[i].stl + playersInGame[i].blk+
+    // playersInGame[i].fg + playersInGame[i].ft + playersInGame[i].threes+
+    // playersInGame[i].tov
+  }
+}
+
 
 // var players = [curry, george, durant, wall, harden, green, westbrook, towns, whiteside, leonard, lebron,davis, cousins, giannis];
 
@@ -159,6 +198,8 @@ var homeScore =0;
 var awayScore= 0;
 var delay;
 
+
+
 function dealChips(){
   $deal.on('click',function(){
     playersInGame = [];
@@ -167,6 +208,7 @@ function dealChips(){
     $deal.off();
     randomize();
     setArray();
+    setPlayerVal();
 
     console.log('deal');
     $('#plusHome img').remove();
