@@ -125,7 +125,6 @@ function Player(ppg, reb, ass, stl, blk, fg, ft, threes, tov, image, name, sum){
   this.image= image;
   this.name=name;
   this.sum = 0;
-  //  ((eval((this.ppg) * customWeights[0]))+(eval((this.reb)* customWeights[1]))+(eval((this.ass)*customWeights[2]))+(eval((this.stl)*customWeights[3]))+(eval((this.blk)*customWeights[4]))+(eval((this.fg/10)*customWeights[5]))+(eval((this.ft/10)*customWeights[6]))+(eval((this.threes)*customWeights[7]))+(eval(this.tov*customWeights[8])))
 }
 
 var players = [
@@ -152,23 +151,19 @@ function setArray(){
   }
 }
 
+//applies a total value to each player based on the scoring system the user enters
 function setPlayerVal(){
   for(i=0; i<playersInGame.length; i++){
     playersInGame[i].sum =
-    eval(playersInGame[i].ppg)*customWeights[0]+
-    eval(playersInGame[i].ass)*customWeights[1]+
-    eval(playersInGame[i].reb)*customWeights[2]+
-    eval(playersInGame[i].stl)*customWeights[3]+
-    eval(playersInGame[i].blk)*customWeights[4]+
-    eval(playersInGame[i].fg)*customWeights[5]+
-    eval(playersInGame[i].ft)*customWeights[6]+
-    eval(playersInGame[i].threes)*customWeights[7]+
-    eval(playersInGame[i].tov)*customWeights[8]
-
-    // playersInGame[i].sum = playersInGame[i].ppg + playersInGame[i].ass+
-    // playersInGame[i].reb + playersInGame[i].stl + playersInGame[i].blk+
-    // playersInGame[i].fg + playersInGame[i].ft + playersInGame[i].threes+
-    // playersInGame[i].tov
+    (playersInGame[i].ppg)*customWeights[0]+
+    (playersInGame[i].ass)*customWeights[1]+
+    (playersInGame[i].reb)*customWeights[2]+
+    (playersInGame[i].stl)*customWeights[3]+
+    (playersInGame[i].blk)*customWeights[4]+
+    (playersInGame[i].fg)*customWeights[5]+
+    (playersInGame[i].ft)*customWeights[6]+
+    (playersInGame[i].threes)*customWeights[7]+
+    (playersInGame[i].tov)*customWeights[8]
   }
 }
 
@@ -306,8 +301,8 @@ function homeTurn(){
     newSidebar +='<li>Ass:  '+$(this).attr('ass')+'</li>'
     newSidebar +='<li>Stl:  '+$(this).attr('stl')+'</li>'
     newSidebar +='<li>Blk:  '+$(this).attr('blk')+'</li>'
-    newSidebar +='<li>Fg:  '+$(this).attr('fg')+'%'+'</li>'
-    newSidebar +='<li>Ft:  '+$(this).attr('ft')+'%'+'</li>'
+    newSidebar +='<li>Fg %:  '+$(this).attr('fg')+'</li>'
+    newSidebar +='<li>Ft %:  '+$(this).attr('ft')+'</li>'
     newSidebar +='<li>3pm:  '+$(this).attr('threes')+'</li>'
     newSidebar +='<li>Tov:  '+$(this).attr('tov')+'</li>'
     newSidebar += '</ul>'
