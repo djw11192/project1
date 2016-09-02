@@ -7,7 +7,7 @@ Players choose between "Home" and "Away".  Each side is dealt 7 chips represente
 
 The team to "play" first is based on a 2-2-1-1-1 series format.  The possession arrow indicated who's turn it is.
 
-![](["images/wireframe.png"])
+![game](images/wireframe.png)
 
 ##Controls
 
