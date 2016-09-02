@@ -141,7 +141,12 @@ var players = [
   new Player(14.2, 11.8, 0.4, 0.6, 3.7, .61, .65, 0, 1.9, '<img src="images/whiteside.png"/>', "Whiteside"),
   new Player(14, 9.5, 7.4, 1.5, 1.4, .49, .7, 1.2, 3.2, '<img src="images/green.png"/>', "Green"),
   new Player(19.9, 4.9, 10.2, 1.9, 0.8, .42, .79, 1.5, 4.1, '<img src="images/john_wall.png"/>', "Wall"),
-  new Player(23.1, 7, 4.1, 1.9, 0.4, .42, .86, 2.6, 3.3, '<img src="images/paul_george.png"/>', "George")
+  new Player(23.1, 7, 4.1, 1.9, 0.4, .42, .86, 2.6, 3.3, '<img src="images/paul_george.png"/>', "George"),
+  new Player(19.5, 4.2, 10, 2.1, 0.2, .46, .9, 1.6, 2.6, '<img src="images/chris.png"/>', "Paul"),
+  new Player(25.1, 4, 6.8, 0.9, 0.4, .42, .89, 3.1, 3.2, '<img src="images/lillard.png"/>', "Lillard"),
+  new Player(21.2, 4.7, 6.4, 2.1, 0.4, .43, .81, 2.8, 2.9, '<img src="images/lowry.png"/>', "Lowry"),
+  new Player(20.9, 4.4, 5.2, 1.6, 0.5, .43, .85, 2.2, 2.1, '<img src="images/walker.png"/>', "Walker"),
+  new Player(17.1, 9, 3.3, 1.8, 1.7, .47, .76, 0.9, 2.4, '<img src="images/milsap.png"/>', "Milsap")
 ]
 
 var playersInGame=[];
