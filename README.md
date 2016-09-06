@@ -3,9 +3,9 @@
 
 ##Javascript-based Multiplayer game
 
-Players choose between "Home" and "Away".  Each side is dealt 7 chips represented by NBA stars and take turns playing chips until there is a winner. A chip's value is based on the NBA player's stats, and each category is weighted according to the scoring system chosen before the game starts.
+Players choose between "Home" and "Away".  Each side is dealt 7 chips, represented by NBA stars, and take turns playing chips until there is a winner. A chip's value is based on the NBA player's stats, and each category is weighted according to the scoring system chosen before the game starts.
 
-The team to "play" first is based on a 2-2-1-1-1 series format.  The possession arrow indicated who's turn it is.
+The team to "play" first is based on a 2-2-1-1-1 series format.  The possession arrow indicates who's turn it is.
 
 ![game](images/wireframe.png)
 

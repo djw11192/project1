@@ -85,8 +85,9 @@ $ok.on('click', function(){
   statWeights();
 
   $('#okBtn2').on('click', function(){
-    $('#instructions').remove();
-    $('#okBtn2').remove();
+    $('#instructions').hide();
+    $('#okBtn2').hide();
+    dealChips();
   })
 })
 
@@ -282,6 +283,7 @@ var moveChip7A = function(){
 var lastChip = function(){
   $(this).html($(this).attr('image'));
   // awayTurn();
+
 }
 
 //turns go as followed:
@@ -416,7 +418,8 @@ function resetGame(){
     turn=1;
     $('#away-score h3').text('0');
     $('#home-score h3').text('0');
-    dealChips();
+    $('#okBtn2').show();
+    dealChips()
     appendChips();
     $('.home img').remove();
     $('.away img').remove();
