@@ -47,4 +47,4 @@ As a user I can play multiple games without reading the rules and scoring option
 
 As a player, I can choose game modes with more diverse scoring systems.
 
-As a player, I can choose between a random dealing of chips or drafting players
+As a player, I can choose between a random dealing of chips or drafting players.
