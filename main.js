@@ -444,5 +444,3 @@ function showTrophyAway(){
   $('#plusAway').append('<img src="images/NBA-TROPHY.png" class="trophyAway"/>');
    setInterval(function(){$('.trophyAway').toggleClass('toggleAway')},400)
 }
-
-// dealChips();
