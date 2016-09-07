@@ -173,9 +173,6 @@ function setPlayerVal(){
   }
 }
 
-
-// var players = [curry, george, durant, wall, harden, green, westbrook, towns, whiteside, leonard, lebron,davis, cousins, giannis];
-
 var randomize = function(){
   players.sort(function(a, b){
   return 0.5 - Math.random();
@@ -199,14 +196,14 @@ var homeScore =0;
 var awayScore= 0;
 var delay;
 
-
-
 function dealChips(){
+  $deal.show();
   $deal.on('click',function(){
+    $('#away-score h3, #home-score h3').text('0');
     playersInGame = [];
     homeScore=0;
     awayScore=0;
-    $deal.off();
+    $deal.hide();
     randomize();
     setArray();
     setPlayerVal();
@@ -282,8 +279,6 @@ var moveChip7A = function(){
 }
 var lastChip = function(){
   $(this).html($(this).attr('image'));
-  // awayTurn();
-
 }
 
 //turns go as followed:
@@ -416,9 +411,6 @@ var clearContent = function(){
 function resetGame(){
   if(homeScore+awayScore===7){
     turn=1;
-    $('#away-score h3').text('0');
-    $('#home-score h3').text('0');
-    $('#okBtn2').show();
     dealChips()
     appendChips();
     $('.home img').remove();
@@ -427,11 +419,9 @@ function resetGame(){
     if(homeScore>awayScore){
       console.log("home champ")
       showTrophyHome();
-      // homeScore=0;
     } else {
       console.log('away champ');
       showTrophyAway();
-      // awayScore=0;
     }
   }
 }
@@ -448,13 +438,11 @@ function appendChips(){
 
 function showTrophyHome(){
   $('#plusHome').append('<img src="images/NBA-TROPHY.png" class="trophyHome"/>');
-  setInterval(function(){
-    $('.trophyHome').toggleClass('toggleHome')},400)
+  setInterval(function(){$('.trophyHome').toggleClass('toggleHome')},400);
 }
 function showTrophyAway(){
   $('#plusAway').append('<img src="images/NBA-TROPHY.png" class="trophyAway"/>');
-  setInterval(function(){
-    $('.trophyAway').toggleClass('toggleAway')},400)
+   setInterval(function(){$('.trophyAway').toggleClass('toggleAway')},400)
 }
 
-dealChips();
+// dealChips();
